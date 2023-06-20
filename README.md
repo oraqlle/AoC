@@ -9,6 +9,10 @@ Advent of Code Solutions
 ## 2022
 
 - Day 01
-  - C++
-  - Rust
-  - Elixir
+  - [C++](2022/day-01/cpp/day-01.cxx)
+  - Rust - _Todo_
+  - Elixir - _Todo_
+
+## Authors & Contributors
+
+- Tyler Swann
