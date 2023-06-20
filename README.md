@@ -5,6 +5,9 @@ Advent of Code Solutions
 ## Table of Contents
 
 - [AoC](#aoc)
+  - [Table of Contents](#table-of-contents)
+  - [2022](#2022)
+  - [Authors \& Contributors](#authors--contributors)
 
 ## 2022
 
