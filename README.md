@@ -13,8 +13,10 @@ Advent of Code Solutions
 
 - Day 01
   - [C++](2022/day-01/cpp/day-01.cxx)
-  - Rust - _Todo_
-  - Elixir - _Todo_
+  - [C](2022/day-01/c/day-01.c)
+  - [Rust](2022/day-01/rust/src/main.rs)
+  - [Zig](2022/day-01/zig/src/day-01.zig)
+  - [Elixir](2022/day-01/elixir/day-01.exs)
 
 ## Authors & Contributors
 
