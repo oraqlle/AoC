@@ -26,7 +26,6 @@ pub fn main() !void {
         var strs = std.mem.split(u8, chunk, "\n");
 
         while (strs.next()) |numStr| {
-            // try stdout.print("str: {s}\n", .{numStr});
             if (!std.mem.eql(u8, numStr, "")) {
                 const num = try std.fmt.parseUnsigned(usize, numStr, 10);
                 sum += num;
