@@ -1,4 +1,6 @@
-/// \brief AoC 2022 Day 03 Part 1 Solution
+#![feature(iter_array_chunks)]
+
+/// \brief AoC 2022 Day 03 Part 2 Solution
 ///
 /// Author: Tyler Swann (oraqlle.net@gmail.com)
 ///
@@ -27,14 +29,13 @@ fn main() {
     let sum = buf
         .lines()
         .map(|ln| ln.expect("Error reading line!"))
-        .map(|ln| {
-            let mid = ln.len() / 2;
-            (
-                ln.get(0..mid).unwrap().to_owned(),
-                ln.get(mid..).unwrap().to_owned(),
-            )
+        .array_chunks::<3>()
+        .map(|chunk| match chunk {
+            [a, b, c] => a
+                .chars()
+                .find(|chr| b.contains(*chr) && c.contains(*chr))
+                .unwrap_or(0 as char),
         })
-        .map(|(a, b)| a.chars().find(|c| b.contains(*c)).unwrap_or(0 as char))
         .map(|c| to_num(c))
         .sum::<usize>();
 
