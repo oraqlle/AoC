@@ -1,4 +1,4 @@
-/// \brief AoC 2022 Day 04 Part 1 Solution
+/// \brief AoC 2022 Day 04 Part 2 Solution
 ///
 /// Author: Tyler Swann (oraqlle.net@gmail.com)
 ///
@@ -30,7 +30,7 @@ fn main() {
                 .map(|(s1, s2)| (parse_range(s1), parse_range(s2)))
                 .unwrap()
         })
-        .map(|((a, b), (c, d))| ((a <= c && d <= b) || (c <= a && b <= d)) as usize)
+        .map(|((a, b), (c, d))| ((a <= c && c <= b) || (c <= a && a <= d)) as usize)
         .sum::<usize>();
 
     println!("Result: {:?}", sum);
