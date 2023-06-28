@@ -1,4 +1,4 @@
-/// \brief AoC 2022 Day 01 Part 1 Solution
+/// \brief AoC 2022 Day 01 Part 2 Solution
 ///
 /// Author: Tyler Swann (oraqlle.net@gmail.com)
 ///
@@ -16,7 +16,7 @@ use std::{
 fn main() {
     let file = File::open("../../day-01-input.txt").expect("Error opening file!");
     let buf = BufReader::new(file);
-    let max = buf
+    let mut nums = buf
         .lines()
         .map(|ln| ln.expect("Error reading line!"))
         .collect::<Vec<String>>()
@@ -26,7 +26,11 @@ fn main() {
                 .map(|ln| ln.parse::<usize>().unwrap())
                 .sum::<usize>()
         })
-        .max();
+        .collect::<Vec<_>>();
 
-    println!("{}", max.unwrap());
+    nums.sort_by(|a, b| b.cmp(a));
+
+    let top_3_sum = nums.iter().take(3).sum::<usize>();
+
+    println!("{}", top_3_sum);
 }
