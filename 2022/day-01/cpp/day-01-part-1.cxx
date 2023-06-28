@@ -1,13 +1,13 @@
-/// \brief AoC 2022 Day 01 Solution
+/// \brief AoC 2022 Day 01 Part 1 Solution
 ///
 /// Author: Tyler Swann (oraqlle.net@gmail.com)
 ///
-/// Date: 20/06/2023
+/// Date: 28/06/2023
 ///
 /// License: Apache-2.0 license
 ///
 /// Copyright (c) 2023 - present
-/// \file day-01.cxx
+/// \file day-01-part-1.cxx
 
 #include <algorithm>
 #include <filesystem>

@@ -1,0 +1,10 @@
+{
+  "files.associations": {
+    "*.tpl": "cpp",
+    "*.bazel": "starlark",
+    "*.rddl": "txt",
+    "*.slurm": "shellscript",
+    "*.h.in": "in",
+    "string.h": "c"
+  }
+}

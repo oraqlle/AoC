@@ -4,22 +4,22 @@
 
 ```sh
 cd cpp
-g++ -std=c++20 -o day-01 day-01.cxx
-./day-01
+g++ -std=c++20 -o day-01-part-<1|2> day-01-part-<1|2>.cxx
+./day-01-part-<1|2>
 ```
 
 ## C
 
 ```sh
 cd c
-gcc - std=c11 -o day-01 day-01.c
-./day-01
+gcc -std=c11 -o day-01-part-<1|2> day-01-part--<1|2>.c
+./day-01-part-<1|2>
 ```
 
 ## Rust
 
 ```sh
-cd rust
+cd rust/part-<1|2>
 cargo run
 ```
 
@@ -27,11 +27,10 @@ cargo run
 
 ```sh
 cd zig
-zig run src/day-01.zig
+zig run src/day-01-part-<1|2>.zig
 ```
 
 ## Elixir
 
 ```sh
-elixirc day-01.exs
-
+elixirc day-01-part-<1|2>.exs

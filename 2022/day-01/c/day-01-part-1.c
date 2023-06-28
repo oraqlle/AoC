@@ -1,9 +1,20 @@
+/// \brief AoC 2022 Day 01 Part 1 Solution
+///
+/// Author: Tyler Swann (oraqlle.net@gmail.com)
+///
+/// Date: 28/06/2023
+///
+/// License: Apache-2.0 license
+///
+/// Copyright (c) 2023 - present
+/// \file day-01-part-1.c
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
-
-int main() {
+int main()
+{
     char* path = "../day-01-input.txt";
 
     FILE* file = fopen(path, "r");
@@ -15,7 +26,7 @@ int main() {
 
     size_t sum = 0;
     size_t max = 0;
-    
+
     char current[20];
 
     while (fgets(current, sizeof current, file)) {
@@ -35,4 +46,3 @@ int main() {
 
     return 0;
 }
-

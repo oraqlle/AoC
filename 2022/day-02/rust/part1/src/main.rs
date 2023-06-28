@@ -1,20 +1,17 @@
+/// \brief AoC 2022 Day 02 Part 1 Solution
+///
+/// Author: Tyler Swann (oraqlle.net@gmail.com)
+///
+/// Date: 28/06/2023
+///
+/// License: Apache-2.0 license
+///
+/// Copyright (c) 2023 - present
+/// \file main.rs
 use std::{
     fs::File,
     io::{prelude::*, BufReader},
 };
-
-fn self_move_to_num(mv: (char, char)) -> Result<usize, &'static str> {
-    match mv {
-        ('A', 'X') => Ok(3),
-        ('B', 'X') => Ok(1),
-        ('C', 'X') => Ok(2),
-        (_, 'Y') => Ok((mv.0 as usize) - 64usize),
-        ('A', 'Z') => Ok(2),
-        ('B', 'Z') => Ok(3),
-        ('C', 'Z') => Ok(1),
-        _ => Err("Invalid Self Input!"),
-    }
-}
 
 fn play(mv: (usize, usize)) -> Result<usize, &'static str> {
     match mv {
@@ -35,7 +32,7 @@ fn play(mv: (usize, usize)) -> Result<usize, &'static str> {
 }
 
 fn main() {
-    let file = File::open("../../../../day-02-input.txt").expect("Error opening file!");
+    let file = File::open("../../day-02-input.txt").expect("Error opening file!");
     let buf = BufReader::new(file);
     let score = buf
         .lines()
@@ -46,12 +43,7 @@ fn main() {
                 ln.chars().nth(2).to_owned().unwrap(),
             )
         })
-        .map(|mv| {
-            (
-                (mv.0 as usize) - 64usize,
-                self_move_to_num(mv).expect("One input of 'X', 'Y', or 'Z'"),
-            )
-        })
+        .map(|(op, me)| (((op as usize) - 64usize), ((me as usize) - 87usize)))
         .map(|mv| play(mv).expect("Invalid Round!"))
         .sum::<usize>();
 

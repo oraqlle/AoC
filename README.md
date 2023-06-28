@@ -11,12 +11,12 @@ Advent of Code Solutions
 
 ## 2022
 
-- Day 01
-  - [C++](2022/day-01/cpp/day-01.cxx)
-  - [C](2022/day-01/c/day-01.c)
-  - [Rust](2022/day-01/rust/src/main.rs)
-  - [Zig](2022/day-01/zig/src/day-01.zig)
-  - [Elixir](2022/day-01/elixir/day-01.exs)
+- [Day 01](2022/day-01/README.md)
+  - Languages: C++, C, Rust, Elixir, Zig
+- [Day 02](2022/day-02/README.md)
+  - Languages: Rust
+- [Day 03](2022/day-03/README.md)
+  - Languages: Rust
 
 ## Authors & Contributors
 
