@@ -1,4 +1,4 @@
-# Day 03
+# Day 04
 
 <!-- ## C++
 
@@ -17,18 +17,11 @@ gcc -std=c11 -o day-03-part-<1|2> day-03-part--<1|2>.c
 ```
 -->
 
-## Rust - Part 1
+## Rust
 
 ```sh
-cd rust/part-1
+cd rust/part-<1|2>
 cargo run
-```
-
-## Rust - Part 2
-
-```sh
-cd rust/part-2
-cargo +nightly run
 ```
 
 <!-- ## Zig

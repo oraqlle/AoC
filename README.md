@@ -17,6 +17,8 @@ Advent of Code Solutions
   - Languages: Rust
 - [Day 03](2022/day-03/README.md)
   - Languages: Rust
+- [Day 04](2022/day-04/README.md)
+  - Languages: Rust
 
 ## Authors & Contributors
 
