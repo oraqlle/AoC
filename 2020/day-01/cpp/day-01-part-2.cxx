@@ -43,14 +43,30 @@ auto main(int argc, char* argv[]) -> int
 
     auto inv = std::unordered_set<std::size_t> {};
     auto goal { 2020uL };
+    auto result { 0uL };
+    auto offset { 1uL };
 
-    auto result = std::accumulate(nums.begin(), nums.end(), 0uL, [&inv, &goal](auto acc, auto n) {
-        if (inv.contains(n))
-            return acc = n * (goal - n);
+    while (offset > 0uL) {
 
-        inv.insert(goal - n);
-        return acc;
-    });
+        auto start = std::next(nums.begin(), offset);
+        auto first { *start };
+        auto target { goal - first };
+
+        result = std::accumulate(start, nums.end(), 0uL, [&inv, &target](auto acc, auto n) {
+            if (inv.contains(n))
+                return acc = n * (target - n);
+
+            inv.insert(target - n);
+            return acc;
+        });
+
+        if (result != 0uL) {
+            result *= first;
+            break;
+        }
+
+        offset += 1uL;
+    }
 
     std::cout << "Result: " << result << std::endl;
 
