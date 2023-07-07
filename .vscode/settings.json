@@ -5,6 +5,10 @@
     "*.rddl": "txt",
     "*.slurm": "shellscript",
     "*.h.in": "in",
-    "string.h": "c"
-  }
+    "string.h": "c",
+    "algorithm": "c",
+    "chrono": "c",
+    "random": "c",
+    "limits": "c"
+}
 }
