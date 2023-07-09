@@ -2,7 +2,7 @@
 ///
 /// Author: Tyler Swann (oraqlle.net@gmail.com)
 ///
-/// Date: 08/07/2023
+/// Date: 09/07/2023
 ///
 /// License: Apache-2.0 license
 ///
@@ -24,9 +24,7 @@ namespace fs = std::filesystem;
 
 auto main(int argc, char* argv[]) -> int
 {
-
     auto fpath = fs::weakly_canonical(argv[0]).parent_path() / ".."sv / "day-01-input.txt"sv;
-
     auto file = std::ifstream(fpath);
 
     if (!file.is_open()) {
@@ -34,22 +32,18 @@ auto main(int argc, char* argv[]) -> int
         std::exit(1);
     }
 
-    auto nums = std::vector<std::size_t> {};
+    auto inv = std::unordered_set<std::int64_t> {};
+    auto goal = std::int64_t { 2020 };
+    auto nums = std::vector<std::int64_t> {};
 
     std::ranges::copy(
-        std::istream_iterator<std::size_t>(file),
-        std::istream_iterator<std::size_t>(),
+        std::istream_iterator<std::int64_t>(file),
+        std::istream_iterator<std::int64_t>(),
         std::back_inserter(nums));
 
-    auto inv = std::unordered_set<std::size_t> {};
-    auto goal { 2020uL };
-
-    auto result = std::accumulate(nums.begin(), nums.end(), 0uL, [&inv, &goal](auto acc, auto n) {
-        if (inv.contains(n))
-            return acc = n * (goal - n);
-
+    auto result = std::accumulate(nums.begin(), nums.end(), std::int64_t { 2020 }, [&inv, &goal](auto acc, auto n) {
         inv.insert(goal - n);
-        return acc;
+        return inv.contains(n) ? n * (goal - n) : acc;
     });
 
     std::cout << "Result: " << result << std::endl;

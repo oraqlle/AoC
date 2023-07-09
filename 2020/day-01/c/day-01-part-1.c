@@ -2,7 +2,7 @@
 ///
 /// Author: Tyler Swann (oraqlle.net@gmail.com)
 ///
-/// Date: 08/07/2023
+/// Date: 09/07/2023
 ///
 /// License: Apache-2.0 license
 ///
@@ -16,7 +16,6 @@
 int main()
 {
     char* path = "../day-01-input.txt";
-
     FILE* file = fopen(path, "r");
 
     if (file == NULL) {
@@ -24,25 +23,25 @@ int main()
         exit(1);
     }
 
-    size_t goal = 2020uL;
-    size_t current = 0uL;
-    size_t seek = 0uL;
     size_t seen = 0uL;
-    size_t result = 0uL;
+    long long goal = 2020LL;
+    long long current = 0LL;
+    long long seek = 0LL;
+    long long result = 0LL;
 
     char buf[20];
 
     while (fgets(buf, sizeof buf, file)) {
-        size_t sz = strcspn(buf, "\n");
-        seen += sz + 1;
+        long long sz = (long long)strcspn(buf, "\n");
+        seen += sz + 1LL;
         buf[sz] = '\0';
-        current = (size_t)strtoull(buf, NULL, 10);
+        current = (long long)strtoll(buf, NULL, 10);
         memset(&buf[0], 0, sizeof buf);
 
         rewind(file);
         while (fgets(buf, sizeof buf, file)) {
             buf[strcspn(buf, "\n")] = '\0';
-            seek = (size_t)strtoull(buf, NULL, 10);
+            seek = (long long)strtoll(buf, NULL, 10);
             memset(&buf[0], 0, sizeof buf);
 
             if (current + seek == goal && current != seek) {
@@ -50,17 +49,18 @@ int main()
                 break;
             }
 
-            seek = 0uL;
+            seek = 0LL;
         }
 
-        if (result > 0uL)
+        if (result > 0LL)
             break;
 
-        current = 0uL;
+        current = 0LL;
         fseek(file, (long)seen, SEEK_SET);
     }
 
-    printf("Result: %zu\n", result);
+    printf("Result: %lld\n", result);
+    fclose(file);
 
     return 0;
 }

@@ -1,32 +1,37 @@
-/// \brief AoC 2022 Day 01 Part 1 Solution
+/// \brief AoC 2020 Day 01 Part 1 Solution
 ///
 /// Author: Tyler Swann (oraqlle.net@gmail.com)
 ///
-/// Date: 28/06/2023
+/// Date: 09/07/2023
 ///
 /// License: Apache-2.0 license
 ///
 /// Copyright (c) 2023 - present
 /// \file main.rs
 use std::{
+    collections::HashSet,
     fs::File,
     io::{prelude::*, BufReader},
 };
 
 fn main() {
+    let goal: isize = 2020;
+    let mut inv = HashSet::<isize>::new();
+
     let file = File::open("../../day-01-input.txt").expect("Error opening file!");
-    let buf = BufReader::new(file);
-    let max = buf
+    let result = BufReader::new(file)
         .lines()
         .map(|ln| ln.expect("Error reading line!"))
-        .collect::<Vec<String>>()
-        .split(|ln| ln == "")
-        .map(|rng| {
-            rng.iter()
-                .map(|ln| ln.parse::<usize>().unwrap())
-                .sum::<usize>()
-        })
-        .max();
+        .map(|ln| ln.parse::<isize>().expect("Error parsing integer!"))
+        .fold(0isize, |acc, n| {
+            inv.insert(goal - n);
 
-    println!("{}", max.unwrap());
+            if inv.contains(&n) {
+                n * (goal - n)
+            } else {
+                acc
+            }
+        });
+
+    println!("{}", result);
 }

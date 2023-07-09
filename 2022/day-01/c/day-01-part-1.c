@@ -2,7 +2,7 @@
 ///
 /// Author: Tyler Swann (oraqlle.net@gmail.com)
 ///
-/// Date: 28/06/2023
+/// Date: 09/07/2023
 ///
 /// License: Apache-2.0 license
 ///
@@ -16,7 +16,6 @@
 int main()
 {
     char* path = "../day-01-input.txt";
-
     FILE* file = fopen(path, "r");
 
     if (file == NULL) {
@@ -43,6 +42,7 @@ int main()
     }
 
     printf("Result: %zu\n", max);
+    fclose(file);
 
     return 0;
 }
