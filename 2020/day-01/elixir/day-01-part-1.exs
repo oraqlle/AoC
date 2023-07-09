@@ -1,8 +1,8 @@
-# \brief AoC 2022 Day 01 Part 1 Solution
+# \brief AoC 2020 Day 01 Part 1 Solution
 #
 # Author: Tyler Swann (oraqlle.net@gmail.com)
 #
-# Date: 28/06/2023
+# Date: 09/07/2023
 #
 # License: Apache-2.0 license
 #
@@ -13,24 +13,25 @@ defmodule Day01 do
   @path Path.expand(Path.join("..", "day-01-input.txt"))
 
   def main do
+    goal = 2020
+
     case File.read(@path) do
       {:error, reason} ->
         IO.puts(reason)
         exit(:error)
 
       {:ok, data} ->
-        max =
+        {result, _} =
           data
-          |> String.split("\n\n")
-          |> Enum.map(fn chunk ->
-            chunk
-            |> String.split("\n")
-            |> Enum.map(fn str -> if str != "", do: String.to_integer(str), else: 0 end)
-            |> Enum.sum()
+          |> String.split("\n")
+          |> Enum.map(&String.to_integer/1)
+          |> Enum.reduce({0, %MapSet{}}, fn n, {acc, inv} ->
+            if MapSet.member?(inv, n),
+              do: {n * (goal - n), MapSet.put(inv, goal - n)},
+              else: {acc, MapSet.put(inv, goal - n)}
           end)
-          |> Enum.max()
 
-        IO.puts("Result: #{max}")
+        IO.puts("Result: #{result}")
     end
   end
 end
