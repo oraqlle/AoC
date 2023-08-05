@@ -2,7 +2,7 @@
 ///
 /// Author: Tyler Swann (oraqlle.net@gmail.com)
 ///
-/// Date: 28/06/2023
+/// Date: 05/08/2023
 ///
 /// License: Apache-2.0 license
 ///
@@ -28,9 +28,8 @@ fn main() {
         })
         .collect::<Vec<_>>();
 
-    nums.sort_by(|a, b| b.cmp(a));
+    let idx = nums.len() - 4;
+    let top_3_sum = nums.select_nth_unstable(idx).2.iter().sum::<usize>();
 
-    let top_3_sum = nums.iter().take(3).sum::<usize>();
-
-    println!("{}", top_3_sum);
+    println!("{:?}", top_3_sum);
 }
