@@ -54,7 +54,6 @@ Cargo.lock
 *.pdb
 
 # Elixir
-
 /_build
 /cover
 /deps
@@ -69,3 +68,6 @@ erl_crash.dump
 # VSCode Folder
 .vscode
 
+# Zig
+zig-cache/
+zig-out/
