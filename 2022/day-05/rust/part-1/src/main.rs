@@ -2,7 +2,7 @@
 ///
 /// Author: Tyler Swann (oraqlle.net@gmail.com)
 ///
-/// Date: 24/07/2023
+/// Date: 09/08/2023
 ///
 /// License: Apache-2.0 license
 ///
@@ -13,9 +13,9 @@ use std::{
     io::{prelude::*, BufReader},
 };
 
-fn parse_stack(stack_str: Vec<String>, num_stacks: usize) -> Vec<usize> {
-    vec![]
-}
+// fn parse_stack(stack_str: Vec<String>, num_stacks: usize) -> Vec<usize> {
+//     vec![]
+// }
 
 fn main() {
     let file = File::open("../../day-05-input.txt").expect("Error opening file!");
@@ -25,14 +25,53 @@ fn main() {
         .map(|ln| ln.expect("Error reading line!"))
         .collect::<Vec<_>>();
 
-    let split_idx = lines.iter().position(|ln| ln == "").unwrap();        
+    let split_idx = lines.iter().position(|ln| ln == "").unwrap();
     let (stack_str, moves) = lines.split_at(split_idx);
-    let num_stacks = stack_str.last().unwrap().split_whitespace().collect::<Vec<_>>();
-    
-    println!("{:?}", &num_stacks);
+    let num_stacks = stack_str
+        .last()
+        .unwrap()
+        .split_whitespace()
+        .last()
+        .unwrap()
+        .parse::<usize>()
+        .unwrap_or(0);
 
-    //let stack = parse_stack(stack_str, );
+    let mut stacks = vec![Vec::<char>::new(); num_stacks];
 
-    println!("Result: {:?}", stack_str);
-    println!("Result: {:?}", moves);
+    stack_str.iter().rev().for_each(|row| {
+        row.chars().enumerate().for_each(|(i, chr)| {
+            if chr.is_alphabetic() {
+                stacks.get_mut(i / 4).and_then(|v| {
+                    v.push(chr);
+                    Some(v)
+                });
+            }
+        })
+    });
+
+    moves
+        .iter()
+        .skip(1)
+        .map(|s| {
+            s.split(' ')
+                .filter_map(|ss| ss.parse::<usize>().ok())
+                .collect::<Vec<_>>()
+        })
+        .for_each(|mv| {
+            let count = *mv.get(0).unwrap();
+            let from = *mv.get(1).unwrap() - 1;
+            let to = *mv.get(2).unwrap() - 1;
+
+            for _ in 0..count {
+                let chr = stacks.get_mut(from).unwrap().pop().unwrap();
+                stacks.get_mut(to).unwrap().push(chr);
+            }
+        });
+
+    let result = stacks
+        .iter()
+        .map(|stck| stck.last().unwrap())
+        .collect::<String>();
+
+    println!("Result: {}", result);
 }
